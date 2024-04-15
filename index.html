@@ -24,6 +24,10 @@
             <p v-else>Out of Stock</p> 
             <!-- v-bind optional,shortcut is ':' -->
             <a :href="url" v-show="inStock">Buy now!</a>
+            <ul>
+              <li v-for="detail in details">{{detail}}</li>
+            </ul>
+            <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
           </div>
         </div>
       </div>
