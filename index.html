@@ -20,7 +20,7 @@
           </div>
           <div class="product-info">
             <h1>{{ title }}</h1>
-            <p v-show="onSale" style="color:red;">ON SALE! </p>
+            <p v-show="sale" style="color:red;">ON SALE! </p>
             <p v-if="inStock">In Stock</p>
             <p v-else>Out of Stock</p>
             <ul>
