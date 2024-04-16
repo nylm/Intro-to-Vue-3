@@ -27,9 +27,16 @@
             <ul>
               <li v-for="detail in details">{{detail}}</li>
             </ul>
-            <button class="button" @click="addToBasket">Add to Basket</button>
+            <button class="button" v-on:click="addToBasket">Add to Basket</button>
             <button class="button" @click="deleteBasket">Remove Items</button>
-            <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
+            <div 
+            v-for="variant in variants" 
+            :key="variant.id" 
+            @mouseover="updateImage(variant.image)"
+            class="color-circle"
+            :style="{'background-color':variant.color}"
+            >
+          </div>
           </div>
              <!-- v-bind optional,shortcut is ':' -->
              <a :href="url" v-show="newItems">New Collection!</a>
