@@ -3,16 +3,25 @@ const app = Vue.createApp({
     return {
       basket: 0,
       product: "Socks",
+      brand: "FE",
+      selectedVariant: 0,
       description: "the highest quality men's socks in the world ",
-      image: "./assets/images/socks_green.jpg",
       onSale: true,
-      inStock: false,
       newItems: true,
-      inventory: 3,
       details: ["90% cotton", "7% wool", "3% polyester"],
       variants: [
-        { id: 333, color: "green", image: "./assets/images/socks_green.jpg" },
-        { id: 444, color: "blue", image: "./assets/images/socks_blue.jpg" },
+        {
+          id: 333,
+          color: "green",
+          image: "./assets/images/socks_green.jpg",
+          quantity: 50,
+        },
+        {
+          id: 444,
+          color: "blue",
+          image: "./assets/images/socks_blue.jpg",
+          quantity: 0,
+        },
       ],
       url: "https://www.redbubble.com/shop/?query=vuejs%20socks",
     };
@@ -26,8 +35,19 @@ const app = Vue.createApp({
       this.basket = 0;
     },
 
-    updateImage(variantImage) {
-      this.image = variantImage;
+    updateVariant(index) {
+      this.selectedVariant = index;
+    },
+  },
+  computed: {
+    title() {
+      return this.brand + " " + this.product;
+    },
+    image() {
+      return this.variants[this.selectedVariant].image;
+    },
+    inStock() {
+      return this.variants[this.selectedVariant].quantity;
     },
   },
 });
