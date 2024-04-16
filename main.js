@@ -6,6 +6,7 @@ const app = Vue.createApp({
       description: "the highest quality men's socks in the world ",
       image: "./assets/images/socks_green.jpg",
       onSale: true,
+      inStock: false,
       newItems: true,
       inventory: 3,
       details: ["90% cotton", "7% wool", "3% polyester"],
