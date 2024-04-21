@@ -1,13 +1,13 @@
 const app = Vue.createApp({
   data() {
     return {
-      basket: 0,
+      basket: [],
       isPremium: true,
     };
   },
   methods: {
-    updateBasket() {
-      this.basket += 1;
+    updateBasket(id) {
+      this.basket.push(id);
     },
     deleteBasket() {
       this.basket = 0;

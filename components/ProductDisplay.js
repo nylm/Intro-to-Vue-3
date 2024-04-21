@@ -8,9 +8,9 @@ app.component("product-display", {
   template:
     /*html*/
     `<div class="product-display">
-    <div class="product-container">
+      <div class="product-container">
       <div class="product-image">
-        <img v-bind:src='image' :class="{'out-of-stock-img':!inStock}">
+      <img v-bind:src='image' :class="{'out-of-stock-img':!inStock}">
       </div>
       <div class="product-info">
         <h1>{{ title }}</h1>
@@ -19,7 +19,7 @@ app.component("product-display", {
         <p v-else>Out of Stock</p>
         <p>Shipping: {{ shipping }}</p>
         <ul>
-          <li v-for="detail in details">{{detail}}</li>
+        <li v-for="detail in details">{{detail}}</li>
         </ul>
         <button class="button" :class="{disabledButton:!inStock}" v-on:click="addToBasket" :disabled="!inStock">Add to Basket</button>
         <button class="button" @click="deleteBasket">Remove Items</button>
@@ -30,11 +30,11 @@ app.component("product-display", {
         class="color-circle"
         :style="{'background-color':variant.color}"
         >
-      </div>
+        </div>
       </div>
       <!-- v-bind optional,shortcut is ':' -->
       <a :href="url" v-show="newItems">New Collection!</a>
-    </div>
+      </div>
     </div>
     `,
   data() {
@@ -66,7 +66,7 @@ app.component("product-display", {
   },
   methods: {
     addToBasket() {
-      this.$emit("add-to-basket");
+      this.$emit("add-to-basket", this.variants[this.selectedVariant].id);
     },
 
     deleteBasket() {
