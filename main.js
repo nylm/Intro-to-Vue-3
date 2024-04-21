@@ -5,5 +5,12 @@ const app = Vue.createApp({
       isPremium: true,
     };
   },
-  methods: {},
+  methods: {
+    updateBasket() {
+      this.basket += 1;
+    },
+    deleteBasket() {
+      this.basket = 0;
+    },
+  },
 });

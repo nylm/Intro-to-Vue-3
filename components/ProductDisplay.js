@@ -32,10 +32,11 @@ app.component("product-display", {
         >
       </div>
       </div>
-         <!-- v-bind optional,shortcut is ':' -->
-         <a :href="url" v-show="newItems">New Collection!</a>
+      <!-- v-bind optional,shortcut is ':' -->
+      <a :href="url" v-show="newItems">New Collection!</a>
     </div>
-  </div>`,
+    </div>
+    `,
   data() {
     return {
       basket: 0,
@@ -65,11 +66,11 @@ app.component("product-display", {
   },
   methods: {
     addToBasket() {
-      this.basket += 1;
+      this.$emit("add-to-basket");
     },
 
     deleteBasket() {
-      this.basket = 0;
+      this.$emit("delete-basket");
     },
 
     updateVariant(index) {

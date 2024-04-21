@@ -13,7 +13,11 @@
       <div class="nav-bar">
       </div>
       <div class="cart">Basket ({{ basket}})</div>
-      <product-display :premium="isPremium"></product-display>
+      <product-display 
+       :premium="isPremium" 
+       @add-to-basket="updateBasket"
+       @delete-basket="deleteBasket"
+       ></product-display>
     </div>
 
     <!-- Import App -->
