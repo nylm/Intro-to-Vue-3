@@ -5,11 +5,11 @@ app.component("product-display", {
       required: true,
     },
   },
-  template:
-    /*html*/
-    `<div class="product-display">
+  template: /*html*/ `
+  <div class="product-display">
       <div class="product-container">
       <div class="product-image">
+      <a :href="url" v-show="newItems">Check out our new collection!</a> <br />
       <img v-bind:src='image' :class="{'out-of-stock-img':!inStock}">
       </div>
       <div class="product-info">
@@ -18,10 +18,8 @@ app.component("product-display", {
         <p v-if="inStock">In Stock</p>
         <p v-else>Out of Stock</p>
         <p>Shipping: {{ shipping }}</p>
-        <ul>
-        <li v-for="detail in details">{{detail}}</li>
-        </ul>
-        <button class="button" :class="{disabledButton:!inStock}" v-on:click="addToBasket" :disabled="!inStock">Add to Basket</button>
+        <product-details :details="details"></product-details>
+        <button class="button" :class="{disabledButton:!inStock}" @click="addToBasket" :disabled="!inStock">Add to Basket</button>
         <button class="button" @click="deleteBasket">Remove Items</button>
         <div 
         v-for="(variant,index) in variants" 
@@ -32,10 +30,10 @@ app.component("product-display", {
         >
         </div>
       </div>
-      <!-- v-bind optional,shortcut is ':' -->
-      <a :href="url" v-show="newItems">New Collection!</a>
+      <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+      <review-form @review-submitted="addReview"></review-form>
       </div>
-    </div>
+  </div>
     `,
   data() {
     return {
@@ -62,6 +60,7 @@ app.component("product-display", {
         },
       ],
       url: "https://www.redbubble.com/shop/?query=vuejs%20socks",
+      reviews: [],
     };
   },
   methods: {
@@ -75,6 +74,10 @@ app.component("product-display", {
 
     updateVariant(index) {
       this.selectedVariant = index;
+    },
+
+    addReview(review) {
+      this.reviews.push(review);
     },
   },
   computed: {
